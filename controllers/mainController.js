@@ -19,7 +19,7 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
             }
         ],
         product: {
-            productid: 'TDW',
+            productid: 'ADAM',
             planid: 'RPUL'
         }
         ,
@@ -35,12 +35,11 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
     $scope.setting_Obj = {
         products: [
             {
-                productid: 'TDW',
+                productid: 'ADAM',
                 plans: [
-                    { planid: 'RPUL' },
-                    { planid: 'EN20' },
-                    { planid: 'EN65' },
-                    { planid: 'WL' }
+                    { planid: 'ADM01' },
+                    { planid: 'ADM02' },
+                    { planid: 'ADM03' }                    
                 ]
             },
             {
@@ -51,6 +50,53 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
                     { planid: 'EN65' },
                     { planid: 'WL' }
                 ]
+            }
+        ],
+        riders: [
+            {riderid: 'TDW'},
+            {riderid: 'ADB'},
+            {riderid: 'HIB65'},
+            {riderid: 'TL'},
+            {riderid: 'MDB85'},
+            {riderid: 'FIB'}
+        ],
+        product_rider: [
+            {
+                productid: 'ADM',
+                riders: [
+                    {
+                        riderid: 'TDW',
+                        holderagemin: 15,
+                        holderagemax: 60,
+                        insureragemin: null,
+                        insureragemax: null
+                    }
+                ],
+                plan_riders: [
+                    {
+                        planid: 'ADM01',
+                        riders: [
+                            {riderid: 'TDW'},
+                            {riderid: 'ADB'},
+                            {riderid: 'HIB65'},
+                            {riderid: 'MDB85'}
+                        ]                        
+                    }, 
+                    {
+                        planid: 'ADM02',
+                        riders: [
+                            {riderid: 'TDW'},
+                            {riderid: 'ADB'},
+                            {riderid: 'HIB65'},
+                            {riderid: 'MDB85'},
+                            {riderid: 'FIB'}
+                        ]                        
+                    }                    
+
+
+                ]
+
+                
             }
         ]
     };
