@@ -1,0 +1,48 @@
+<md-content class="md-padding">
+    <section ng-init="s = baseObj.customers[0]">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Insured Information</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <div layout="row">
+                    <div flex>Name:{{ s.surname}} {{s.given}}</div>
+                    <div flex>Gender: {{s.gender}}</div>
+                    <div flex>Age: {{ calculateAge(s.dob) }}</div>
+                    <div flex>Smoker: {{s.smoking | YesNo}}</div>
+                </div>
+            </md-card-content>
+        </md-card>
+    </section>
+    <section>
+        <md-card>
+            <md-card-content>
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-xs> <label>Product</label>
+                        <md-icon>wc</md-icon>
+                        <md-select name="productid" ng-model="baseObj.product.productid">
+                            <md-option ng-repeat="n in  getProductList();" ng-value="n.productid">
+                                {{n.productid}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs> <label>Plan</label>
+                        <md-icon>wc</md-icon>
+                        <md-select name="planid" ng-model="baseObj.product.planid">
+                            <md-option ng-repeat="n in getPlanList(baseObj.product.productid)" ng-value="n.planid">
+                                {{n.planid}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div ng-bind-html="html($parent.plan.template)" compile-template></div>
+
+                <div ng-include="getTemplate($parent.plan.code)" ng-if="$parent.plan!=null"></div>
+                </div>
+            </md-card-content>
+        </md-card>
+
+    </section>
+</md-content>

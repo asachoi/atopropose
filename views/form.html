@@ -1,0 +1,10 @@
+<md-content class="md-padding">
+  <md-nav-bar md-selected-nav-item="'customer'" nav-bar-aria-label="navigation links">
+    <md-nav-item md-nav-click="" name="customer" ui-sref=".customer">Customer</md-nav-item>
+    <md-nav-item md-nav-click="" name="paseplan" ui-sref=".baseplan" ng-disabled="setDisable('baseplan')">Base Plan</md-nav-item>
+    <md-nav-item md-nav-click="" name="rider" ui-sref=".rider" ng-disabled="setDisable('rider')">Rider</md-nav-item>
+  </md-nav-bar>
+  <div class="container">
+    <div ui-view></div>
+  </div>
+</md-content>

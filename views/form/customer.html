@@ -1,0 +1,68 @@
+
+
+
+<md-content class="md-padding">
+    <form name="userForm" ng-keyup="" ng-mouseup="">
+        <section ng-repeat="s in baseObj.customers" ng-if="!settings.isSamePerson || s.role=='insurer'">            
+            <md-card>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{s.role}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <label>Surname</label>
+                            <md-icon>account_box</md-icon><input ng-model="s.surname" required>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <label>Given</label>
+                            <md-icon></md-icon><input ng-model="s.given" required>
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <label>Gender</label>
+                            <md-icon>wc</md-icon>
+                            <md-select name="gender" ng-model="s.gender" aria-required="">
+                                <md-option value="Male">Male</md-option>
+                                <md-option value="Female">Female</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs>
+
+                            <!--<md-checkbox style="vertical-align: middle;display: inline-flex;" ng-model="s.smoking"></md-checkbox>//-->
+                            <label>Smoking Status</label>
+                            <md-select ng-model="s.smoking" ng-init="s.smoking='S'" ng-disabled="true" ">
+                                <md-option value="Y ">Yes</md-option>
+                                <md-option value="N ">No</md-option>
+                                <md-option value="S ">Standard</md-option>
+                            </md-select>                            
+                        </md-input-container>
+                        <md-input-container class="md-block " flex-gt-xs>
+                            <label>Date of Birth</label>
+                            <md-datepicker ng-model="s.dob " md-current-view="year "> </md-datepicker>
+                        </md-input-container>
+                        <md-input-container class="md-block " flex-gt-xs>
+                            Age: {{ s.dob | Age }}
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-xs="row ">
+                        <md-input-container class="md-block " flex-gt-xs>
+                            <label>Mobile</label>
+                            <md-icon>phone</md-icon><input ng-model="s.phone ">
+                        </md-input-container>
+                        <md-input-container class="md-block " flex-gt-xs>
+                            <label>Email</label>
+                            <md-icon>email</md-icon><input ng-model="s.email ">
+                        </md-input-container>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </section>
+        <input type="checkbox" ng-model="settings.isSamePerson" ng-change="updateSamePerson();"> 
+        
+        Policy holder is same as insured
+    </form>
+</md-content>
