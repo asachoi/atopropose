@@ -2,9 +2,8 @@
     Rider 2
     State:{{$current}}
     {{getRiderList('ADAM', 'ADM02')}}
-    <div data-ng-repeat="r in baseObj.riders">
+    <div data-ng-repeat="r in baseObj.riders">       
         
-        {{r | json}}
         <input ng-model="r.faceamount">
     </div>
 </md-content>

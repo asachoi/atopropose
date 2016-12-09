@@ -11,12 +11,12 @@
   <md-content>
     <md-toolbar class="md-small-tall">
       <div class="md-toolbar-tools" layout="row" layout-wrap>
-        <div flex="none">          
-          <a ui-sref="list"> <i class="material-icons">home</i></a>           
+        <div flex="none">
+          <a ui-sref="list"> <i class="material-icons">home</i></a>
         </div>
         <div flex>
-            {{$state}}
-            {{'TITLE' | translate}}
+          {{'CUSTOMER' | translate}}
+          {{'LIST' || translate}}
         </div>
         <div flex="nogrow" ng-show="saveButton=='true'">
           <md-button class="md-raised" ng-click="saveState(title);">
@@ -50,11 +50,12 @@
 
     <script type="text/javascript">
         var cachebuster = Math.round(new Date().getTime() / 1000);
-        document.write('<scr'+'ipt type="text/javascript" src="services/services.js?cb=' +cachebuster+'"></scr' + 'ipt>');
-        document.write('<scr'+'ipt type="text/javascript" src="js/main.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        
+        document.write('<scr'+'ipt type="text/javascript" src="js/app.js?cb=' +cachebuster+'"></scr' + 'ipt>');
         document.write('<scr'+'ipt type="text/javascript" src="js/filters.js?cb=' +cachebuster+'"></scr' + 'ipt>');
         document.write('<scr'+'ipt type="text/javascript" src="js/translate.js?cb=' +cachebuster+'"></scr' + 'ipt>');        
         document.write('<scr'+'ipt type="text/javascript" src="js/route.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<scr'+'ipt type="text/javascript" src="js/services.js?cb=' +cachebuster+'"></scr' + 'ipt>');
         document.write('<scr'+'ipt type="text/javascript" src="controllers/mainController.js?cb=' +cachebuster+'"></scr' + 'ipt>');
         
     </script>

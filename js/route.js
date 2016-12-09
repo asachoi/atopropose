@@ -14,7 +14,8 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             templateUrl: 'views/list.html?cb=' + cachebuster
             ,
             controller: function ($scope, $rootScope) {
-                $scope.$state = $rootScope.$id;
+               // $scope.$state = $rootScope.$id;
+                $scope.title = 'title_list';
             }
         })
         .state('form', {
@@ -26,6 +27,7 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
 
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
                 $scope.settingObj = $scope.$parent.$parent.settingObj;
+                $scope.title = 'title.form';
 
                 $scope.setDisable = function (section) {
                     //console.debug(section);
@@ -64,6 +66,12 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                     return p[0].plans;
                 }
 
+                $scope.isBasicPlan = function(productid, planid) {
+ 
+                    var pl = this.getPlanList(productid);
+                    var rs = $filter('filter')(pl, { planid: planid }); 
+                    return rs[0].plantype != null;                    
+                }
 
 
             }
