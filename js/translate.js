@@ -1,11 +1,14 @@
-mainApp.config(function ($translateProvider) {
+mainApp.config(
+    function ($translateProvider) {
     $translateProvider.translations('en', {
         TITLE: 'Hello',
         FOO: 'This is a paragraph.',
         BUTTON_LANG_EN: 'english',
         BUTTON_LANG_DE: 'german',
         CUSTOMER: 'Customer',
-        Pending: 'Pending'
+        Pending: 'Pending',
+        customerinfo: 'Customer Information',
+        planinfo: 'Plan Information'
     });
     $translateProvider.translations('de', {
         TITLE: 'Hallo',

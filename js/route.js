@@ -86,7 +86,8 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
                 $scope.settingObj = $scope.$parent.$parent.settingObj;
 
-                $scope.getRiderList = function (productid, planid) {                    //var products = ;
+                $scope.getRiderList = function (productid, planid) {           
+                    if(productid == null || planid ==null) return;
                     var p = $filter('filter')($scope.settingObj.products, { productid: productid });
 
                     var rs = $filter('filter')(p[0].plans, { planid: planid });

@@ -1,0 +1,16 @@
+<section ng-init="p = baseObj.product">
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{'planinfo' | translate}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <div layout="row">
+                <div flex>{{'plantype' | translate}}: {{ p.productid}}</div>
+                <div flex>{{'plancode' | translate}}: {{p.planid}}</div>
+
+            </div>
+        </md-card-content>
+    </md-card>
+</section>

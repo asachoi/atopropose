@@ -1,21 +1,5 @@
 <md-content class="md-padding">
-    <section ng-init="s = baseObj.customers[0]">
-        <md-card>
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">Insured Information</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <div layout="row">
-                    <div flex>Name:{{ s.surname}} {{s.given}}</div>
-                    <div flex>Gender: {{s.gender}}</div>
-                    <div flex>Age: {{ calculateAge(s.dob) }}</div>
-                    <div flex>Smoker: {{s.smoking | YesNo}}</div>
-                </div>
-            </md-card-content>
-        </md-card>
-    </section>
+    <div ng-include="'views/form/cards/customersection.html'"></div>
     <section>
         <md-card>
             <md-card-content>
