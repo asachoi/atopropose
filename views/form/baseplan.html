@@ -46,7 +46,7 @@
                     </md-input-container>      
                 </div>
                 <div layout-gt-xs="row" ng-if="isBasicPlan(baseObj.product.productid, baseObj.product.planid)">
-                    Add field
+                    <div ng-include="'customizations/baseplan/' + isBasicPlan(baseObj.product.productid, baseObj.product.planid) + '.html'"></div> 
                 </div>               
             </md-card-content>
         </md-card>

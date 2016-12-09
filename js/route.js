@@ -67,10 +67,11 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                 }
 
                 $scope.isBasicPlan = function(productid, planid) {
- 
+                    if (planid == null) return 0;
                     var pl = this.getPlanList(productid);
-                    var rs = $filter('filter')(pl, { planid: planid }); 
-                    return rs[0].plantype != null;                    
+                    var rs = $filter('filter')(pl, { planid: planid });
+                    var planType = rs[0].plantype; 
+                    return  planType==null?0:planType;                    
                 }
 
 

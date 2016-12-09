@@ -41,7 +41,7 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate',
                 {
                     productid: 'Enrich',
                     plans: [
-                        { planid: 'UL111', plantype: 1 },
+                        { planid: 'UL111', plantype: ['dbo'] },
                         { planid: 'UL112' },
                         { planid: 'UL113' },
                         { planid: 'UL121' },
