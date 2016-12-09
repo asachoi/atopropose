@@ -1,29 +1,10 @@
 var cachebuster = Math.round(new Date().getTime() / 1000);
 
-var mainApp = angular.module('mainApp', ['ngMaterial', 'ngStorage', 'ui.router', 'pascalprecht.translate']);
+var mainApp = angular.module('mainApp', 
+['ngMaterial', 'ngStorage', 'ui.router', 'pascalprecht.translate']);
 
+ 
 
-
-
-
-mainApp.filter('YesNo', function () {
-    return function (x) {
-        //alert(x);
-        if (x == 'S') return 'Standard';
-        return x ? 'Yes' : 'No';
-    };
-});
-
-mainApp.filter('Age', function () {
-    return function (birthday) { // birthday is a date
-        if (birthday == null)
-            return '';
-        var ageDifMs = Date.now() - birthday.getTime();
-        var ageDate = new Date(ageDifMs); // miliseconds from epoch
-        return Math.abs(ageDate.getUTCFullYear() - 1970);
-    }
-
-});
 
 
 
@@ -46,13 +27,12 @@ mainApp.directive('compileTemplate', function ($compile, $parse) {
 });
 
 
-Array.prototype.select = function (closure) {
-    for (var n = 0; n < this.length; n++) {
-        if (closure(this[n])) {
-            return this[n];
-        }
-    }
-
-    return null;
-};
-
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}

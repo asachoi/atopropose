@@ -1,8 +1,13 @@
-mainApp.controller('mainController', ['$scope', '$state', '$translate', function ($scope, $rootScope, $translate, $state) {
+mainApp.controller('mainController', ['$scope', '$state', '$translate',  
+function ($scope, $rootScope, $translate, $state) {
     $translate.use('en');
 
-    $rootScope.$state = $state;
+    $scope.$on('$stateChangeSuccess',
+        function(event, toState, toParams, fromState, fromParams){
+            $scope.currentstate = toState.name;
+        });
     
+
     $rootScope.stateObj = {
         settings: {
             isSamePerson: true
@@ -10,6 +15,8 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
         customers:
         [
             {
+                guid: guid(),
+                source: 'PE',
                 role: 'insurer',
                 smoking: 'S',
                 firstname: ''
@@ -21,15 +28,10 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
             }
         ],
         product: {
-            productid: 'ADAM',
-            planid: 'RPUL'
         }
         ,
         riders: [
-            { riderid: 'PRB20' },
-            { riderid: 'PRB25' }
         ]
-
     };
 
     $rootScope.settingObj = {
@@ -58,9 +60,6 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
             { riderid: 'FIB' },
             { riderid: 'OPT' },
             { riderid: 'DDD' }
-
-
-
         ],
         product_rider: [
             {
@@ -161,8 +160,11 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
         ]
     };
 
+    
+
+    
     $scope.stateObj = $rootScope.stateObj;
     $scope.settingObj = $rootScope.settingObj;
-
+    //$rootScope.state = 'xxx';// toState;
 
 }]);

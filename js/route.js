@@ -13,7 +13,7 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             cache: false,
             templateUrl: 'views/list.html?cb=' + cachebuster
             ,
-            controller: function ($scope, $rootScope) { 
+            controller: function ($scope, $rootScope) {
                 $scope.$state = $rootScope.$id;
             }
         })
@@ -22,13 +22,13 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             cache: false,
             templateUrl: 'views/form.html?cb=' + cachebuster,
             controller: function ($scope, $rootScope, $state) {
-                $scope.$state = $state;
- 
+                //$scope.state = $state;
+
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
                 $scope.settingObj = $scope.$parent.$parent.settingObj;
 
                 $scope.setDisable = function (section) {
-                    console.debug(section);
+                    //console.debug(section);
                 }
             }
         })
@@ -37,12 +37,12 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             cache: false,
             templateUrl: 'views/form/customer.html?cb=' + cachebuster,
             controller: function ($scope, $rootScope, $state) {
-                 $scope.current = $state.current;
+                $scope.current = $state.current;
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
                 $scope.settingObj = $scope.$parent.$parent.settingObj;
 
                 $scope.updateSamePerson = function () {
- 
+
                 }
             }
         })
@@ -51,7 +51,7 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             cache: false,
             templateUrl: 'views/form/baseplan.html?cb=' + cachebuster,
             controller: function ($scope, $rootScope, $filter, $state) {
-                 $scope.current = $state.current;
+                $scope.current = $state.current;
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
                 $scope.settingObj = $scope.$parent.$parent.settingObj;
 
@@ -64,7 +64,7 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                     return p[0].plans;
                 }
 
-                
+
 
             }
         })
@@ -75,15 +75,15 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             controller: function ($scope, $rootScope, $filter, $state) {
                 $scope.current = $state.current;
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
-                $scope.settingObj = $scope.$parent.$parent.settingObj; 
-                
+                $scope.settingObj = $scope.$parent.$parent.settingObj;
+
                 $scope.getRiderList = function (productid, planid) {                    //var products = ;
-                    var p = $filter('filter')($scope.settingObj.products, {productid: productid });
-                   
-                    var rs = $filter('filter')(p[0].plans, {planid: planid });
-                     console.debug(rs);
+                    var p = $filter('filter')($scope.settingObj.products, { productid: productid });
+
+                    var rs = $filter('filter')(p[0].plans, { planid: planid });
+                    //console.debug(rs);
                     return rs;
-                }                          
+                }
 
             }
         });
