@@ -1,6 +1,7 @@
 <md-content >
     Rider 2
-    State:{{$state}}
+    State:{{$current}}
+    {{getRiderList('ADAM', 'ADM02')}}
     <div data-ng-repeat="r in baseObj.riders">
         
         {{r | json}}

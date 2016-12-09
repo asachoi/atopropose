@@ -1,7 +1,9 @@
 mainApp.controller('mainController', ['$scope', '$state', '$translate', function ($scope, $rootScope, $translate, $state) {
     $translate.use('en');
 
-    $scope.stateObj = {
+    $rootScope.$state = $state;
+    
+    $rootScope.stateObj = {
         settings: {
             isSamePerson: true
         },
@@ -30,9 +32,7 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
 
     };
 
-    //delete $rootScope.settingObj2;
-
-    $scope.setting_Obj = {
+    $rootScope.settingObj = {
         products: [
             {
                 productid: 'ADAM',
@@ -43,12 +43,9 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
                 ]
             },
             {
-                productid: 'ABD',
+                productid: 'SH',
                 plans: [
-                    { planid: 'RPUL' },
-                    { planid: 'EN20' },
-                    { planid: 'EN65' },
-                    { planid: 'WL' }
+                    { planid: 'HI100' }
                 ]
             }
         ],
@@ -58,9 +55,41 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
             { riderid: 'HIB65' },
             { riderid: 'TL' },
             { riderid: 'MDB85' },
-            { riderid: 'FIB' }
+            { riderid: 'FIB' },
+            { riderid: 'OPT' },
+            { riderid: 'DDD' }
+
+
+
         ],
         product_rider: [
+            {
+                productid: 'SH',
+                riders: [
+                    {
+                        riderid: 'OPT',
+                        holderagemin: 18,
+                        holderagemax: 55,
+                        insureragemin: null,
+                        insureragemax: null
+                    },
+                    {
+                        riderid: 'DDD',
+                        holderagemin: 18,
+                        holderagemax: 55,
+                        insureragemin: null,
+                        insureragemax: null
+                    }
+                ],
+                plan_riders: [
+                    {
+                        planid: 'HI100',
+                        riders: [
+                            'OPT', 'DDD'
+                        ]
+                    },
+                ]
+            },
             {
                 productid: 'ADM',
                 riders: [
@@ -131,5 +160,9 @@ mainApp.controller('mainController', ['$scope', '$state', '$translate', function
             }
         ]
     };
+
+    $scope.stateObj = $rootScope.stateObj;
+    $scope.settingObj = $rootScope.settingObj;
+
 
 }]);

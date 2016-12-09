@@ -13,8 +13,7 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             cache: false,
             templateUrl: 'views/list.html?cb=' + cachebuster
             ,
-            controller: function ($scope, $rootScope) {
-                //$scope.baseObj = $scope.$parent.$parent.stateObj;
+            controller: function ($scope, $rootScope) { 
                 $scope.$state = $rootScope.$id;
             }
         })
@@ -22,8 +21,12 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             url: '/form',
             cache: false,
             templateUrl: 'views/form.html?cb=' + cachebuster,
-            controller: function ($scope, $rootScope) {
-                //$scope.baseObj = $scope.$parent.$parent.stateObj;
+            controller: function ($scope, $rootScope, $state) {
+                $scope.$state = $state;
+ 
+                $scope.baseObj = $scope.$parent.$parent.stateObj;
+                $scope.settingObj = $scope.$parent.$parent.settingObj;
+
                 $scope.setDisable = function (section) {
                     console.debug(section);
                 }
@@ -33,13 +36,13 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             url: '/customers',
             cache: false,
             templateUrl: 'views/form/customer.html?cb=' + cachebuster,
-            controller: function ($scope, $rootScope) {
+            controller: function ($scope, $rootScope, $state) {
+                 $scope.current = $state.current;
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
-                $scope.settingObj = $scope.$parent.$parent.settingObj2;
+                $scope.settingObj = $scope.$parent.$parent.settingObj;
 
                 $scope.updateSamePerson = function () {
-                    //alert( $scope.$parent.$parent.isSamePerson );
-                    //$scope.$parent.$parent.stateObj.isSamePerson =  $scope.isSamePerson;
+ 
                 }
             }
         })
@@ -47,9 +50,10 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             url: '/baseplan',
             cache: false,
             templateUrl: 'views/form/baseplan.html?cb=' + cachebuster,
-            controller: function ($scope, $rootScope, $filter) {
+            controller: function ($scope, $rootScope, $filter, $state) {
+                 $scope.current = $state.current;
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
-                $scope.settingObj = $scope.$parent.$parent.setting_Obj;
+                $scope.settingObj = $scope.$parent.$parent.settingObj;
 
                 $scope.getProductList = function () {
                     return $scope.settingObj.products;
@@ -60,16 +64,26 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                     return p[0].plans;
                 }
 
+                
+
             }
         })
         .state('form.rider', {
             url: '/rider',
             cache: false,
             templateUrl: 'views/form/rider.html??cb=' + cachebuster,
-            controller: function ($scope, $rootScope) {
+            controller: function ($scope, $rootScope, $filter, $state) {
+                $scope.current = $state.current;
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
-                $scope.settingObj = $scope.$parent.$parent.setting_Obj;
-                //$scope.$state = $scope.$state;          
+                $scope.settingObj = $scope.$parent.$parent.settingObj; 
+                
+                $scope.getRiderList = function (productid, planid) {                    //var products = ;
+                    var p = $filter('filter')($scope.settingObj.products, {productid: productid });
+                   
+                    var rs = $filter('filter')(p[0].plans, {planid: planid });
+                     console.debug(rs);
+                    return rs;
+                }                          
 
             }
         });
