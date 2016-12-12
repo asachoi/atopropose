@@ -61,21 +61,38 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                 }
 
                 $scope.getBaseProductPlans = function (productid) {                    //var products = ;
+
+        
                     var p = $filter('filter')($scope.settingObj.products, { productid: productid })[0];
                     var plans =[];
+
                     for(i=0; i < p.plantypes.length; i++) {
-                        var pt = p.plantypes[i];
-                        plans = plans.concat(pt.plans);
                         
+                        var pt = p.plantypes[i];
+
+                        for(j=0; j < pt.plans.length; j++) {
+                            var ptt = pt.plans[j];
+                            ptt.plantype = pt.plantype;
+                            plans = plans.concat(ptt);
+                        }                   
                     }
-                    console.debug(plans);
+                   
                     return plans;
                 }
 
                 $scope.isBasicPlan = function(productid, planid) {
+                   
                     if (planid == null) return 0;
-                    var pl = this.getPlanList(productid);
-                    var rs = $filter('filter')(pl, { planid: planid });
+
+                    var pl = $filter('filter')($scope.settingObj.products, { productid: productid })[0];
+                    var productype = planid.split('.')[0];
+                    var rs = $filter('filter')(pl.plantypes, { plantype: productype });
+console.debug(rs);
+                    
+
+                    
+
+                    
                     var customfields = rs[0].customfields; 
                     //alert(customfields);
                     return  customfields==null?0:customfields;                    

@@ -18,12 +18,14 @@ mainApp.controller('mainController',
                         source: 'PE',
                         role: 'insurer',
                         smoking: 'S',
-                        firstname: ''
+                        surname: 'Asa'
                     },
                     {
                         role: 'policyholder',
                         smoking: 'S',
-                        firstname: ''
+                        firstname: '',
+                        surname: ''
+
                     }
                 ],
                 product: {
@@ -39,12 +41,13 @@ mainApp.controller('mainController',
                         productid: 'Enrich',
                         plantypes: [
                             {
-                                plantype: 'RPUL',                                
+                                plantype: 'RPUL',     
+                                customfields: 'deathbenefitoptions',                           
                                 plans: [
                                     {
                                         planid: 'UL111',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
-                                        customfields: 'deathbenefitoptions',
+                                        
                                     },
                                     { planid: 'UL112' },
                                     { planid: 'UL113' },
@@ -61,7 +64,7 @@ mainApp.controller('mainController',
                             },
                             {
                                 plantype: 'LPUL',
-                                customfields: 'deathbenefitoptions',
+                                
                                 plans: [
                                     {
                                         planid: 'UL111',

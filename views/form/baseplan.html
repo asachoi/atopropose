@@ -17,24 +17,24 @@
                     <md-input-container class="md-block" flex-gt-xs> <label>Plan</label>
                         <md-icon></md-icon>
                         <md-select name="planid" ng-model="baseObj.product.planid">
-                            <md-option ng-repeat="n in getBaseProductPlans(baseObj.product.productid)" ng-value="n.planid">
+                            <md-option ng-repeat="n in getBaseProductPlans(baseObj.product.productid)" ng-value="n.plantype + '.' + n.planid">
                                 {{n.planid}}
                             </md-option>
                         </md-select>
                     </md-input-container>
                 </div>
                 <div layout-gt-xs="row">
-                    <md-input-container class="md-block" flex-gt-xs>  
+                    <md-input-container class="md-block" flex-gt-xs>
                         <label>Face amount</label>
-                        <md-icon> </md-icon>                         
-                        <input ng-model="baseObj.product.faceamount">                           
-                        </md-input> 
-                    </md-input-container>      
+                        <md-icon> </md-icon>
+                        <input ng-model="baseObj.product.faceamount">
+                        </md-input>
+                    </md-input-container>
                 </div>
                 <!--additional fields//-->
                 <div layout-gt-xs="row" ng-if="isBasicPlan(baseObj.product.productid, baseObj.product.planid)">
-                    <div ng-include="'customizations/baseplan/' + isBasicPlan(baseObj.product.productid, baseObj.product.planid) + '.html'"></div> 
-                </div>               
+                    <div ng-include="'customizations/baseplan/' + isBasicPlan(baseObj.product.productid, baseObj.product.planid) + '.html'"></div>
+                </div>
             </md-card-content>
         </md-card>
     </section>
