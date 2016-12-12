@@ -38,26 +38,29 @@
       </div>
     </footer>
     <!-- Angular Material requires Angular.js Libraries -->
-    <script src="libs/angular-1.5.9/angular.min.js"></script>
-    <script src="libs/angular-1.5.9/angular-animate.min.js"></script>
-    <script src="libs/angular-1.5.9/angular-aria.min.js"></script>
-    <script src="libs/angular-1.5.9/angular-messages.min.js"></script>
-    <script src="libs/angular-1.5.9/angular-sanitize.js"></script>
-    <script src="libs/angular-material.min.js"></script>
-    <script src="libs/angular-ui-router.min.js"></script>
-    <script src="libs/angular-translate.min.js"></script>
-    <script src="libs/ngStorage.js"></script>
+    <script src="assets/libs/angular-1.5.9/angular.min.js"></script>
+    <script src="assets/libs/angular-1.5.9/angular-animate.min.js"></script>
+    <script src="assets/libs/angular-1.5.9/angular-aria.min.js"></script>
+    <script src="assets/libs/angular-1.5.9/angular-messages.min.js"></script>
+    <script src="assets/libs/angular-1.5.9/angular-sanitize.js"></script>
+    <script src="assets/libs/angular-material.min.js"></script>
+    <script src="assets/libs/angular-ui-router.min.js"></script>
+    <script src="assets/libs/angular-translate.min.js"></script>
+    <script src="assets/libs/ngStorage.js"></script>
 
     <script type="text/javascript">
         var cachebuster = Math.round(new Date().getTime() / 1000);
         
-        document.write('<scr'+'ipt type="text/javascript" src="js/app.js?cb=' +cachebuster+'"></scr' + 'ipt>');
-        document.write('<scr'+'ipt type="text/javascript" src="js/filters.js?cb=' +cachebuster+'"></scr' + 'ipt>');
-        document.write('<scr'+'ipt type="text/javascript" src="js/translate.js?cb=' +cachebuster+'"></scr' + 'ipt>');        
-        document.write('<scr'+'ipt type="text/javascript" src="js/route.js?cb=' +cachebuster+'"></scr' + 'ipt>');
-        document.write('<scr'+'ipt type="text/javascript" src="js/services.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<scr'+'ipt type="text/javascript" src="core/app.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<scr'+'ipt type="text/javascript" src="core/filters.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+       
+        document.write('<scr'+'ipt type="text/javascript" src="core/route.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<scr'+'ipt type="text/javascript" src="core/directives.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<scr'+'ipt type="text/javascript" src="core/services.js?cb=' +cachebuster+'"></scr' + 'ipt>');
         document.write('<scr'+'ipt type="text/javascript" src="controllers/mainController.js?cb=' +cachebuster+'"></scr' + 'ipt>');
-        
+        document.write('<scr'+'ipt type="text/javascript" src="customizations/translate.js?cb=' +cachebuster+'"></scr' + 'ipt>'); 
+
+        document.write('<scr'+'ipt type="text/javascript" src="controllers/listController.js?cb=' +cachebuster+'"></scr' + 'ipt>');        
     </script>
 
   </md-content>

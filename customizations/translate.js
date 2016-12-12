@@ -17,4 +17,5 @@ mainApp.config(
         BUTTON_LANG_DE: 'deutsch'
     });
     $translateProvider.preferredLanguage('en');
+    $translateProvider.useSanitizeValueStrategy(null);
 })

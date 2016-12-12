@@ -1,8 +1,6 @@
 <md-button ui-sref="form.customer">Create Proposal</md-button>
-
 <md-content class="md-padding" style="background-color:EEE" flex="auto" layout="row">
     <div flex-gt-sm="50" flex class="md-padding">
-
         <md-toolbar layout="row">
             <div class="md-toolbar-tools">
                 <span>{{'CUSTOMER' | translate}}</span>
@@ -14,7 +12,6 @@
                     <div class="md-list-item-text" layout="column">
                         {{item.firstname}}{{item.given}}
                         <p> {{ item.phone }}</p>
-
                     </div>
                 </md-list-item>
                 <md-divider></md-divider>
@@ -41,15 +38,12 @@
             </md-list>
         </md-content>
     </div>
-
     <div flex-gt-sm="50" flex class="md-padding">
-
         <md-toolbar layout="row">
             <div class="md-toolbar-tools">
                 <span>Moved to Apply</span>
             </div>
         </md-toolbar>
-
         <md-content>
             <md-list flex ng-repeat="item in pList  | filter: {status:'completed', $:searchKey}">
 

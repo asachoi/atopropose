@@ -1,5 +1,7 @@
 <md-content class="md-padding">
-    <div ng-include="'views/form/cards/customersection.html'"></div>
+    <!--panel session //-->
+    <div ng-include="'views/form/cards/customersection.html?1=2'"></div>
+    <!--form //-->
     <section>
         <md-card>
             <md-card-content>
@@ -7,7 +9,7 @@
                     <md-input-container class="md-block" flex-gt-xs> <label>Product</label>
                         <md-icon> </md-icon>
                         <md-select name="productid" ng-model="baseObj.product.productid">
-                            <md-option ng-repeat="n in  getProductList();" ng-value="n.productid">
+                            <md-option ng-repeat="n in  getBaseProduct();" ng-value="n.productid">
                                 {{n.productid}}
                             </md-option>
                         </md-select>
@@ -15,7 +17,7 @@
                     <md-input-container class="md-block" flex-gt-xs> <label>Plan</label>
                         <md-icon></md-icon>
                         <md-select name="planid" ng-model="baseObj.product.planid">
-                            <md-option ng-repeat="n in getPlanList(baseObj.product.productid)" ng-value="n.planid">
+                            <md-option ng-repeat="n in getBaseProductPlans(baseObj.product.productid)" ng-value="n.planid">
                                 {{n.planid}}
                             </md-option>
                         </md-select>
@@ -29,6 +31,7 @@
                         </md-input> 
                     </md-input-container>      
                 </div>
+                <!--additional fields//-->
                 <div layout-gt-xs="row" ng-if="isBasicPlan(baseObj.product.productid, baseObj.product.planid)">
                     <div ng-include="'customizations/baseplan/' + isBasicPlan(baseObj.product.productid, baseObj.product.planid) + '.html'"></div> 
                 </div>               
