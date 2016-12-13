@@ -21,7 +21,7 @@
                             <input ng-model="s.surname" required>
                             <div ng-messages="s.surname.$error" role="alert">
                                 <div ng-message-exp="['required']">
-                                    Your surname must be between 10 and 100 characters long and look like an e-mail address.
+                                    {{'error_surname' | translate}}
                                 </div>
                             </div>
                         </md-input-container>
@@ -59,8 +59,6 @@
                                 <md-radio-button value="S ">Standard</md-radio-button>
                             </md-radio-group >                            
                         </md-input-container>
-                       
-
                     </div>
                     <div layout-gt-xs="row ">
                         <md-input-container class="md-block " flex-gt-xs>

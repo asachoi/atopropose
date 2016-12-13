@@ -13,7 +13,7 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             cache: false,
             templateUrl: 'views/list.html?cb=' + cachebuster
             ,
-            controller: function ($scope, $rootScope) {               
+            controller: function ($scope, $rootScope) {
                 $scope.title = 'title_list';
             }
         })
@@ -62,40 +62,40 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
 
                 $scope.getBaseProductPlans = function (productid) {                    //var products = ;
 
-        
-                    var p = $filter('filter')($scope.settingObj.products, { productid: productid })[0];
-                    var plans =[];
 
-                    for(i=0; i < p.plantypes.length; i++) {
-                        
+                    var p = $filter('filter')($scope.settingObj.products, { productid: productid })[0];
+                    var plans = [];
+
+                    for (i = 0; i < p.plantypes.length; i++) {
+
                         var pt = p.plantypes[i];
 
-                        for(j=0; j < pt.plans.length; j++) {
+                        for (j = 0; j < pt.plans.length; j++) {
                             var ptt = pt.plans[j];
                             ptt.plantype = pt.plantype;
                             plans = plans.concat(ptt);
-                        }                   
+                        }
                     }
-                   
+
                     return plans;
                 }
 
-                $scope.isBasicPlan = function(productid, planid) {
-                   
+                $scope.isBasicPlan = function (productid, planid) {
+
                     if (planid == null) return 0;
 
                     var pl = $filter('filter')($scope.settingObj.products, { productid: productid })[0];
                     var productype = planid.split('.')[0];
                     var rs = $filter('filter')(pl.plantypes, { plantype: productype });
-console.debug(rs);
-                    
+                    console.debug(rs);
 
-                    
 
-                    
-                    var customfields = rs[0].customfields; 
+
+
+
+                    var customfields = rs[0].customfields;
                     //alert(customfields);
-                    return  customfields==null?0:customfields;                    
+                    return customfields == null ? 0 : customfields;
                 }
             }
         })
@@ -108,11 +108,11 @@ console.debug(rs);
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
                 $scope.settingObj = $scope.$parent.$parent.settingObj;
 
-                $scope.getRiderList = function (productid, planid) {           
-                    if(productid == null || planid ==null) return;
+                $scope.getRiderList = function (productid, planid) {
+                    if (productid == null || planid == null) return;
                     var p = $filter('filter')($scope.settingObj.products, { productid: productid });
                     var rs = $filter('filter')(p[0].plans, { planid: planid });
-                    
+
                     return rs;
                 }
 
@@ -128,7 +128,7 @@ console.debug(rs);
                 $scope.settingObj = $scope.$parent.$parent.settingObj;
 
             }
-        })        
+        })
         ;
 
 

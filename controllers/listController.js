@@ -1,5 +1,5 @@
 mainApp.controller('listController',
-    ['$scope', '$state',
+    ['$scope', '$rootScope',
         function ($scope, $rootScope) {
             $scope.title = 'title_list';
         }]);
