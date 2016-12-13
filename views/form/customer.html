@@ -19,10 +19,20 @@
                         <md-input-container class="md-block" flex-gt-xs>
                             <label>Surname</label>
                             <input ng-model="s.surname" required>
+                            <div ng-messages="s.surname.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    Your surname must be between 10 and 100 characters long and look like an e-mail address.
+                                </div>
+                            </div>
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-xs>
                             <label>Given</label>
                             <input ng-model="s.given" required>
+                            <div ng-messages="s.given.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    Your surname must be between 10 and 100 characters long and look like an e-mail address.
+                                </div>
+                            </div>
                         </md-input-container>
                     </div>
                     <div layout-gt-sm="row">
@@ -59,13 +69,16 @@
                         </md-input-container>
                         <md-input-container class="md-block " flex-gt-xs>
                             <label>Email (optional)</label>
-                            <md-icon>email</md-icon><input ng-model="s.email " type="email">
+                            <md-icon>email</md-icon><input ng-model="s.email " type="email ">
                         </md-input-container>
                     </div>
                 </md-card-content>
-            </md-card>
-                <input type="checkbox" ng-model="baseObj.settings.isSamePerson " ng-change="updateSamePerson(); ">
+            </md-card><div layout="row " layout-align="end center ">
+            <md-checkbox ng-model="baseObj.settings.isSamePerson " aria-label="Checkbox 1 "ng-change="updateSamePerson(); ">
                 Policy holder is same as insured 
+            </md-checkbox> 
+            </div>
+                
         </section>
 
     </form>

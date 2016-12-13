@@ -11,7 +11,11 @@ mainApp.config(
             CUSTOMER: 'Customer',
             Pending: 'Pending Proposal',
             customerinfo: 'Customer Information',
-            planinfo: 'Plan Information'
+            planinfo: 'Plan Information',
+            plantype: 'Plan Type',
+            plancode: 'Plan Code',
+            age: 'Age',
+            faceamount: 'Face Amount',
         });
         $translateProvider.translations('de', {
             TITLE: 'Hallo',

@@ -117,7 +117,19 @@ console.debug(rs);
                 }
 
             }
-        });
+        })
+        .state('form.summary', {
+            url: '/summary',
+            cache: false,
+            templateUrl: 'views/form/summary.html?cb=' + cachebuster,
+            controller: function ($scope, $rootScope, $filter, $state) {
+                $scope.current = $state.current;
+                $scope.baseObj = $scope.$parent.$parent.stateObj;
+                $scope.settingObj = $scope.$parent.$parent.settingObj;
+
+            }
+        })        
+        ;
 
 
 });

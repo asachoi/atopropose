@@ -2,40 +2,46 @@
     <!--panel session //-->
     <div ng-include="'views/form/cards/customersection.html?1=2'"></div>
     <!--form //-->
-    <section>
-        <md-card>
-            <md-card-content>
-                <div layout-gt-xs="row">
-                    <md-input-container class="md-block" flex-gt-xs> <label>Product</label>
-                        <md-icon> </md-icon>
-                        <md-select name="productid" ng-model="baseObj.product.productid">
-                            <md-option ng-repeat="n in  getBaseProduct();" ng-value="n.productid">
-                                {{n.productid}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-xs> <label>Plan</label>
-                        <md-icon></md-icon>
-                        <md-select name="planid" ng-model="baseObj.product.planid">
-                            <md-option ng-repeat="n in getBaseProductPlans(baseObj.product.productid)" ng-value="n.plantype + '.' + n.planid">
-                                {{n.planid}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-                <div layout-gt-xs="row">
-                    <md-input-container class="md-block" flex-gt-xs>
-                        <label>Face amount</label>
-                        <md-icon> </md-icon>
-                        <input ng-model="baseObj.product.faceamount">
-                        </md-input>
-                    </md-input-container>
-                </div>
-                <!--additional fields//-->
-                <div layout-gt-xs="row" ng-if="isBasicPlan(baseObj.product.productid, baseObj.product.planid)">
-                    <div ng-include="'customizations/baseplan/' + isBasicPlan(baseObj.product.productid, baseObj.product.planid) + '.html'"></div>
-                </div>
-            </md-card-content>
-        </md-card>
-    </section>
+    <form name="productForm" ng-keyup="" ng-mouseup="">
+        <section>
+            <md-card>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{'planinfo' | translate}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-xs> <label>Product</label>
+                            
+                            <md-select name="productid" ng-model="baseObj.product.productid">
+                                <md-option ng-repeat="n in  getBaseProduct();" ng-value="n.productid">
+                                    {{n.productid}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs> <label>Plan</label>
+                            <md-icon></md-icon>
+                            <md-select name="planid" ng-model="baseObj.product.planid">
+                                <md-option ng-repeat="n in getBaseProductPlans(baseObj.product.productid)" ng-value="n.plantype + '.' + n.planid">
+                                    {{n.planid}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <label>{{'faceamount'|translate}}</label>                           
+                            <input ng-model="baseObj.product.faceamount">
+                            </md-input>
+                        </md-input-container>
+                    </div>
+                    <!--additional fields//-->
+                    <div layout-gt-xs="row" ng-if="isBasicPlan(baseObj.product.productid, baseObj.product.planid)">
+                        <div ng-include="'customizations/baseplan/' + isBasicPlan(baseObj.product.productid, baseObj.product.planid) + '.html'"></div>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </section>
+    </form>
 </md-content>

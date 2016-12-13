@@ -50,7 +50,7 @@
 
     <script type="text/javascript">
         var cachebuster = Math.round(new Date().getTime() / 1000);
-        
+        document.write('<scr'+'ipt type="text/javascript" src="core/static.js?cb=' +cachebuster+'"></scr' + 'ipt>');
         document.write('<scr'+'ipt type="text/javascript" src="core/app.js?cb=' +cachebuster+'"></scr' + 'ipt>');
         document.write('<scr'+'ipt type="text/javascript" src="core/filters.js?cb=' +cachebuster+'"></scr' + 'ipt>');
        
