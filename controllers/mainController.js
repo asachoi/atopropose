@@ -42,11 +42,11 @@ mainApp.controller('mainController',
                         plantypes: [
                             {
                                 plantype: 'RPUL',     
-                                customfields: 'deathbenefitoptions',                           
+                                customfields: 'RPUL',                           
                                 plans: [
                                     {
                                         planid: 'UL111',
-                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133']
                                         
                                     },
                                     { planid: 'UL112' },
@@ -63,14 +63,12 @@ mainApp.controller('mainController',
                                 ],
                             },
                             {
-                                plantype: 'LPUL',
-                                
+                                plantype: 'LPUL',                                
                                 plans: [
                                     {
-                                        planid: 'UL111',
+                                        planid: 'UM111',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133']
                                     },
-                                    { planid: 'UM111' },
                                     { planid: 'UM112' },
                                     { planid: 'UM113' },
                                     { planid: 'UM121' },
@@ -100,8 +98,7 @@ mainApp.controller('mainController',
                         productid: 'SH',
                         plantypes: [
                             {
-                                plantype: '',
-                                customfields: 'deathbenefitoptions',
+                                plantype: '',                                
                                 plans: [
                                     { planid: 'HI100' }
                                 ]

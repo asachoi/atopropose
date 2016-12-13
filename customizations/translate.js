@@ -9,7 +9,7 @@ mainApp.config(
             BUTTON_LANG_EN: 'english',
             BUTTON_LANG_DE: 'german',
             CUSTOMER: 'Customer',
-            Pending: 'Pending',
+            Pending: 'Pending Proposal',
             customerinfo: 'Customer Information',
             planinfo: 'Plan Information'
         });

@@ -6,8 +6,9 @@
                 <span>{{'CUSTOMER' | translate}}</span>
             </div>
         </md-toolbar>
-        <md-content>
-            <md-list flex ng-repeat="item in cList  | filter: {$:searchKey}">
+        <md-content ng-init="cList=[{firstname:'asa choi'}]">
+            <md-list flex ng-repeat="item in cList  | filter: {$:searchKey}"
+            >
                 <md-list-item class="md-3-line" ng-click="gotoProposal();">
                     <div class="md-list-item-text" layout="column">
                         {{item.firstname}}{{item.given}}
@@ -41,7 +42,7 @@
     <div flex-gt-sm="50" flex class="md-padding">
         <md-toolbar layout="row">
             <div class="md-toolbar-tools">
-                <span>Moved to Apply</span>
+                <span>Moved to POS</span>
             </div>
         </md-toolbar>
         <md-content>
