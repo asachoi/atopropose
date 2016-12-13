@@ -16,14 +16,21 @@ mainApp.service('coreSvcs', function () {
                                         planid: 'UL111',
                                         planname: '',
                                         currency: 'PHP',
-                                        famultiplier: '15 X 49',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
                                         deathbenefit: 'DB Option 1 (Face Plus)',
                                         fundcode: 'SGF',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL112',
-                                        planname: ''
+                                        planname: '',
+                                        currency: 'PHP',
+                                        famultipliermin: 20,
+                                        famultipliermax: 50,
+                                        deathbenefit: 'DB Option 1 (Face Plus)',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL113',

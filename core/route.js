@@ -64,6 +64,8 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                 $scope.getProduct = function (productid) {
                     return $filter('filter')($scope.settingObj.products, { productid: productid })[0];
                 }
+                
+                               
 
                 $scope.getPlan = function (productid, planid) {
                     if (planid == null) return 0;
@@ -79,9 +81,7 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                 }
 
 
-                $scope.getBaseProductPlans = function (productid) {                    //var products = ;
-
-
+                $scope.getBaseProductPlans = function (productid) {
                     var p = $scope.getProduct(productid);
                     var plans = [];
 
