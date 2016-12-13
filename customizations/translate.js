@@ -17,6 +17,7 @@ mainApp.config(
             age: 'Age',
             faceamount: 'Face Amount',
             error_surname: 'Your surname must be between 10 and 100 characters long and look like an e-mail address.',
+            premium: 'Basic Annual Premium',
         });
         $translateProvider.translations('de', {
             TITLE: 'Hallo',

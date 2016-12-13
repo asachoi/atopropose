@@ -13,7 +13,7 @@
                 <md-card-content>
                     <div layout-gt-xs="row">
                         <md-input-container class="md-block" flex-gt-xs> <label>Product</label>
-                            
+
                             <md-select name="productid" ng-model="baseObj.product.productid">
                                 <md-option ng-repeat="n in  getBaseProduct();" ng-value="n.productid">
                                     {{n.productid}}
@@ -22,19 +22,54 @@
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-xs> <label>Plan</label>
                             <md-icon></md-icon>
-                            <md-select name="planid" ng-model="baseObj.product.planid">
+                            <md-select name="planid" ng-model="baseObj.product.planid" ng-change="p = getPlan(baseObj.product.productid, baseObj.product.planid);">
                                 <md-option ng-repeat="n in getBaseProductPlans(baseObj.product.productid)" ng-value="n.plantype + '.' + n.planid">
-                                    {{n.planid}}
+                                    OLD MCBL {{n.productid}} Regular Pay ({{n.deathbenefit}} - {{n.famultiplier}} x [{{n.currency}}]) Band 1 {{n.planid}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
                     </div>
+                    <!--demo//-->
+
                     <div layout-gt-xs="row">
+                     
+                        <md-input-container class="md-block" flex-gt-xs ng-if="p.currency!=null">
+                            <md-select name="currency" ng-model="baseObj.product.currency" ng-init="baseObj.product.currency=p.currency;"
+                                ng-disabled="true">
+                                <md-option ng-value="p.currency">{{p.currency}}</md-option>
+                            </md-select>
+                        </md-input-container>
                         <md-input-container class="md-block" flex-gt-xs>
-                            <label>{{'faceamount'|translate}}</label>                           
-                            <input ng-model="baseObj.product.faceamount">
+                            <label>{{'premium'|translate}}</label>
+                            <input ng-model="baseObj.product.annualpremium">
                             </md-input>
                         </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <md-slider flex min="15" max="49" ng-model="baseObj.product.famultiplier" aria-label="red" id="famultiplier" ng-init="baseObj.product.famultiplier=20">
+                            </md-slider>
+                            {{baseObj.product.famultiplier}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-xs ng-if="baseObj.product.annualpremium != null">
+                            <label>{{'faceamount'|translate}}</label>
+                            <input ng-model="baseObj.product.faceamount" ng-value="baseObj.product.annualpremium * baseObj.product.famultiplier" disabled>
+                            </md-input>
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-xs="row" ng-if="(getProduct(baseObj.product.productid).amounttype==null)">
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <label>{{'deathbenefit'|translate}}</label>
+                            <md-select name="currency" ng-model="baseObj.product.deathbenefit" ng-init="baseObj.product.deathbenefit=p.deathbenefit" ng-disabled="true">
+                                <md-option ng-value="p.deathbenefit">{{p.deathbenefit}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+
+                    <!--demo//-->
+                    <div layout-gt-xs="row" ng-if="(getProduct(baseObj.product.productid).amounttypee!=null)">
+                        {{'views/form/baseplan/' + getProduct(baseObj.product.productid).amounttype + '.html'}}
+                        <div ng-include="'views/form/baseplan/' + getProduct(baseObj.product.productid).amounttype + '.html'"></div>
                     </div>
                     <!--additional fields//-->
                     <div layout-gt-xs="row" ng-if="isBasicPlan(baseObj.product.productid, baseObj.product.planid)">

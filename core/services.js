@@ -5,31 +5,70 @@ mainApp.service('coreSvcs', function () {
                 products: [
                     {
                         productid: 'Enrich',
+                        productname: 'OLD MCBL',
                         plantypes: [
                             {
-                                plantype: 'RPUL',
+                                plantype: 'RPUL', //regular pay unilink
+                                planname: 'Regular Pay',
                                 customfields: 'RPUL',
                                 plans: [
                                     {
                                         planid: 'UL111',
-                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133']
-
+                                        planname: '',
+                                        currency: 'PHP',
+                                        famultiplier: '15 X 49',
+                                        deathbenefit: 'DB Option 1 (Face Plus)',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
-                                    { planid: 'UL112' },
-                                    { planid: 'UL113' },
-                                    { planid: 'UL121' },
-                                    { planid: 'UL122' },
-                                    { planid: 'UL123' },
-                                    { planid: 'UL211' },
-                                    { planid: 'UL212' },
-                                    { planid: 'UL213' },
-                                    { planid: 'UL221' },
-                                    { planid: 'UL222' },
-                                    { planid: 'UL223' }
+                                    {
+                                        planid: 'UL112',
+                                        planname: ''
+                                    },
+                                    {
+                                        planid: 'UL113',
+                                        planname: ''
+                                    },
+                                    {
+                                        planid: 'UL121',
+                                        planname: ''
+                                    },
+                                    {
+                                        planid: 'UL122',
+                                        planname: ''
+                                    },
+                                    {
+                                        planid: 'UL123',
+                                        planname: ''
+                                    },
+                                    {
+                                        planid: 'UL211',
+                                        planname: ''
+                                    },
+                                    {
+                                        planid: 'UL212',
+                                        planname: ''
+                                    },
+                                    {
+                                        planid: 'UL213',
+                                        planname: ''
+                                    },
+                                    {
+                                        planid: 'UL221',
+                                        planname: ''
+                                    },
+                                    {
+                                        planid: 'UL222',
+                                        planname: ''
+                                    },
+                                    {
+                                        planid: 'UL223',
+                                        planname: ''
+                                    }
                                 ],
                             },
                             {
-                                plantype: 'LPUL',
+                                plantype: 'LPUL',//limited pay unilink
                                 plans: [
                                     {
                                         planid: 'UM111',
@@ -62,6 +101,7 @@ mainApp.service('coreSvcs', function () {
                     },
                     {
                         productid: 'SH',
+                        amounttype: 'premiumdriven',
                         plantypes: [
                             {
                                 plantype: '',
@@ -168,5 +208,7 @@ mainApp.service('coreSvcs', function () {
             ]
         };
         return data;
-    }
+    };
+
+
 });

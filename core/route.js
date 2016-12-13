@@ -42,8 +42,9 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                 $scope.baseObj = $scope.$parent.$parent.stateObj;
                 $scope.settingObj = $scope.$parent.$parent.settingObj;
 
-                $scope.updateSamePerson = function () {
 
+                $scope.updateSamePerson = function () {
+                    $rootScope.settings.customerFormComplete = $scope.userForm.$valid;
                 }
             }
         })
@@ -60,10 +61,28 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                     return $scope.settingObj.products;
                 }
 
+                $scope.getProduct = function (productid) {
+                    return $filter('filter')($scope.settingObj.products, { productid: productid })[0];
+                }
+
+                $scope.getPlan = function (productid, planid) {
+                    if (planid == null) return 0;
+
+                    var plantype = planid.split('.')[0];
+                    var pid = planid.split('.')[1];
+
+                    var prd =  $scope.getProduct(productid);
+
+                    var producttype = $filter('filter')(prd.plantypes, {plantype:plantype})[0];
+                    var plan = $filter('filter')(producttype.plans, {planid:pid})[0];
+                    return plan; 
+                }
+
+
                 $scope.getBaseProductPlans = function (productid) {                    //var products = ;
 
 
-                    var p = $filter('filter')($scope.settingObj.products, { productid: productid })[0];
+                    var p = $scope.getProduct(productid);
                     var plans = [];
 
                     for (i = 0; i < p.plantypes.length; i++) {
