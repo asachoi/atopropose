@@ -29,9 +29,8 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                 $scope.title = 'title.form';
 
                 $scope.setDisable = function (section) {
-                    //console.debug(section);
+ 
                     return true;
-                   
                 }
             }
         })
@@ -60,15 +59,6 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                     $scope.baseObj = $rootScope.stateObj;
                     $scope.settingObj = $rootScope.settingObj;
 
-                    $scope.test = function() {
-                        console.debug('test start');
-                        console.debug(productServices.getProductGroup('Enrich'));
-        console.debug(productServices.getProduct('Enrich', 'RPUL.UL122'));
-        console.debug(productServices.getPlan('Enrich', 'RPUL.UL122'));                        
-                        //console.de
-                        //productServices.test();
-                    }
-                    //productServices.getProductGroup('MC');
                     $scope.getProductGroupList = function () {
                         //alert(productServices.getProductGroupList());
                         return productServices.getProductGroupList();
@@ -96,23 +86,8 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                     }
 
                     $scope.getBaseProductPlans = function (productid) {
-                        var p = $scope.getProduct(productid);                         
-                        if(p==null ) return;
-                        
-                        var plans = [];
+                        return productServices.getPlansByProduct(productid);
 
-                        for (i = 0; i < p.plantypes.length; i++) {
-
-                            var pt = p.plantypes[i];
-
-                            for (j = 0; j < pt.plans.length; j++) {
-                                var ptt = pt.plans[j];
-                                ptt.plantype = pt.plantype;
-                                plans = plans.concat(ptt);
-                            }
-                        }
-
-                        return plans;
                     }
 
                 }]

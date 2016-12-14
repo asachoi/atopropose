@@ -10,23 +10,41 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
 
 
     this.getProduct = function (productgroupid, planid) {
-        if(planid==null) return;
+        if (planid == null) return;
         var productgroup = this.getProductGroup(productgroupid);
-        var productid = planid.split('.')[0];       
+        var productid = planid.split('.')[0];
 
-        return $filter('filter')(productgroup.plantypes, {plantype: productid})[0];
+        return $filter('filter')(productgroup.plantypes, { plantype: productid })[0];
     }
 
+    this.getPlansByProduct = function (productgroupid) {
+        var p = this.getProductGroup(productgroupid);
+        if (p == null) return;
+
+        var plans = [];
+        for (i = 0; i < p.plantypes.length; i++) {
+
+            var pt = p.plantypes[i];
+
+            for (j = 0; j < pt.plans.length; j++) {
+                var ptt = pt.plans[j];
+                ptt.plantype = pt.plantype;
+                plans = plans.concat(ptt);
+            }
+        }
+
+        return plans;
+    }
     this.getPlan = function (productgroupid, planid) {
-        if(planid==null) return;
+        if (planid == null) return;
         var product = this.getProduct(productgroupid, planid);
         var pid = planid.split('.')[1];
 
-        return $filter('filter')(product.plans, {planid: pid})[0];
+        return $filter('filter')(product.plans, { planid: pid })[0];
     }
 
 
-   this.loadProducts = function () {
+    this.loadProducts = function () {
         var url = '/data/setting.txt';
         $http.get(url).then(
             function (resp) {
@@ -63,9 +81,9 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                         planid: 'UL112',
                                         planname: 'Old MCBL Enrich Regular Pay (DB Option 1 Face Plus) 50x-99x (Peso) Band 1',
                                         currency: 'PHP',
-                                        famultipliermin: 20,
-                                        famultipliermax: 50,
-                                        deathbenefit: 'DB Option 1 (Face Plus)',
+                                        famultipliermin: 50,
+                                        famultipliermax: 99,
+                                        deathbenefit: 'Face Plus',
                                         fundcode: 'SGF',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
@@ -75,7 +93,7 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                         currency: 'PHP',
                                         famultipliermin: 15,
                                         famultipliermax: 49,
-                                        deathbenefit: 'Face Plus',
+                                        deathbenefit: 'Level Face',
                                         fundcode: 'SGF',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
@@ -83,9 +101,9 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                         planid: 'UL121',
                                         planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 50x-99x (Peso) Band 1',
                                         currency: 'USD',
-                                        famultipliermin: 15,
-                                        famultipliermax: 49,
-                                        deathbenefit: 'Face Plus',
+                                        famultipliermin: 50,
+                                        famultipliermax: 99,
+                                        deathbenefit: 'Level Face',
                                         fundcode: 'SGF',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
@@ -103,8 +121,8 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                         planid: 'UL123',
                                         planname: 'Old MCBL Enrich Regular Pay (DB Option 1 Face Plus) 50x-99x (Peso) Band 2',
                                         currency: 'PHP',
-                                        famultipliermin: 15,
-                                        famultipliermax: 49,
+                                        famultipliermin: 50,
+                                        famultipliermax: 99,
                                         deathbenefit: 'Face Plus',
                                         fundcode: 'SGF',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
@@ -115,7 +133,7 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                         currency: 'PHP',
                                         famultipliermin: 15,
                                         famultipliermax: 49,
-                                        deathbenefit: 'Face Plus',
+                                        deathbenefit: 'Level Face',
                                         fundcode: 'SGF',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
@@ -123,16 +141,16 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                         planid: 'UL212',
                                         planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 50x-99x (Peso) Band 2',
                                         currency: 'PHP',
-                                        famultipliermin: 15,
-                                        famultipliermax: 49,
-                                        deathbenefit: 'Face Plus',
+                                        famultipliermin: 50,
+                                        famultipliermax: 99,
+                                        deathbenefit: 'Level Face',
                                         fundcode: 'SGF',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL213',
                                         planname: 'Old MCBL Enrich Regular Pay (DB Option 1 Face Plus) 15x-49x (Dollar) Band 1',
-                                        currency: 'PHP',
+                                        currency: 'USD',
                                         famultipliermin: 15,
                                         famultipliermax: 49,
                                         deathbenefit: 'Face Plus',
@@ -142,9 +160,9 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                     {
                                         planid: 'UL221',
                                         planname: 'Old MCBL Enrich Regular Pay (DB Option 1 Face Plus) 50x-99x (Dollar) Band 1',
-                                        currency: 'PHP',
-                                        famultipliermin: 15,
-                                        famultipliermax: 49,
+                                        currency: 'USD',
+                                        famultipliermin: 50,
+                                        famultipliermax: 99,
                                         deathbenefit: 'Face Plus',
                                         fundcode: 'SGF',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
@@ -152,7 +170,7 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                     {
                                         planid: 'UL222',
                                         planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 15x-49x (Dollar) Band 1',
-                                        currency: 'PHP',
+                                        currency: 'USD',
                                         famultipliermin: 15,
                                         famultipliermax: 49,
                                         deathbenefit: 'Face Plus',
@@ -162,9 +180,9 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                     {
                                         planid: 'UL223',
                                         planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 50x-99x (Dollar) Band 1',
-                                        currency: 'PHP',
-                                        famultipliermin: 15,
-                                        famultipliermax: 49,
+                                        currency: 'USD',
+                                        famultipliermin: 50,
+                                        famultipliermax: 99,
                                         deathbenefit: 'Face Plus',
                                         fundcode: 'SGF',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
