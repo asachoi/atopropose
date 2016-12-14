@@ -10,21 +10,21 @@ mainApp.service('coreSvcs', function () {
                             {
                                 plantype: 'RPUL', //regular pay unilink
                                 planname: 'Regular Pay',
-                                customfields: 'RPUL',
+                                customform: 'RPUL',
                                 plans: [
                                     {
                                         planid: 'UL111',
-                                        planname: '',
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 1 Face Plus) 15x-49x (Peso) Band 1',
                                         currency: 'PHP',
                                         famultipliermin: 15,
                                         famultipliermax: 49,
-                                        deathbenefit: 'DB Option 1 (Face Plus)',
+                                        deathbenefit: 'Face Plus',
                                         fundcode: 'SGF',
                                         riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL112',
-                                        planname: '',
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 1 Face Plus) 50x-99x (Peso) Band 1',
                                         currency: 'PHP',
                                         famultipliermin: 20,
                                         famultipliermax: 50,
@@ -34,72 +34,193 @@ mainApp.service('coreSvcs', function () {
                                     },
                                     {
                                         planid: 'UL113',
-                                        planname: ''
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 15x-49x (Peso) Band 1',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL121',
-                                        planname: ''
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 50x-99x (Peso) Band 1',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL122',
-                                        planname: ''
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 1 Face Plus) 15x-49x (Peso) Band 2',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL123',
-                                        planname: ''
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 1 Face Plus) 50x-99x (Peso) Band 2',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL211',
-                                        planname: ''
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 15x-49x (Peso) Band 2',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL212',
-                                        planname: ''
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 50x-99x (Peso) Band 2',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL213',
-                                        planname: ''
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 1 Face Plus) 15x-49x (Dollar) Band 1',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL221',
-                                        planname: ''
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 1 Face Plus) 50x-99x (Dollar) Band 1',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL222',
-                                        planname: ''
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 15x-49x (Dollar) Band 1',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
                                     {
                                         planid: 'UL223',
-                                        planname: ''
+                                        planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 50x-99x (Dollar) Band 1',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     }
                                 ],
                             },
                             {
+
+
+
+
+
+
+
+
                                 plantype: 'LPUL',//limited pay unilink
                                 plans: [
                                     {
                                         planid: 'UM111',
-                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133']
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
+                                        planname: 'Old MCBL Enrich Minimum 5-Pay (DB Option 1 Face Plus) 5x-20x (Peso)',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
                                     },
-                                    { planid: 'UM112' },
-                                    { planid: 'UM113' },
-                                    { planid: 'UM121' },
-                                    { planid: 'UM122' },
-                                    { planid: 'UM123' },
-                                    { planid: 'UM211' },
-                                    { planid: 'UM212' },
-                                    { planid: 'UM213' },
-                                    { planid: 'UM221' },
-                                    { planid: 'UM222' },
-                                    { planid: 'UM223' },
-                                    { planid: 'UL105' },
-                                    { planid: 'UL205' },
-                                    { planid: 'UM105' },
-                                    { planid: 'UM205' },
-                                    { planid: 'UL110' },
-                                    { planid: 'UL210' },
-                                    { planid: 'UM110' },
-                                    { planid: 'UM210' }
+                                    {
+                                        planid: 'UM112'
+                                        , planname: 'Old MCBL Enrich Minimum 5-Pay (DB Option 2 Level Face) 5x-20x (Peso)',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
+
+                                    },
+                                    {
+                                        planid: 'UM113', planname: 'Old MCBL Enrich Minimum 10-Pay (DB Option 1 Face Plus) 5x-25x (Peso)',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
+                                    },
+                                    {
+                                        planid: 'UM121', planname: 'Old MCBL Enrich Minimum 10-Pay (DB Option 2Level Face) 5x-25x (Peso)',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
+                                    },
+                                    {
+                                        planid: 'UM122', planname: 'Old MCBL Enrich Minimum 5-Pay (DB Option 1 Face Plus) 5x-20x (Dollar)',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
+                                    },
+                                    {
+                                        planid: 'UM123', planname: 'Old MCBL Enrich Minimum 5-Pay (DB Option 2 Level Face) 5x-20x (Dollar)',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
+                                    },
+                                    {
+                                        planid: 'UM211', planname: 'Old MCBL Enrich Minimum 10-Pay (DB Option 1 Face Plus) 5x-25x (Dollar)',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
+                                    },
+                                    {
+                                        planid: 'UM212', planname: 'Old MCBL Enrich Minimum 10-Pay (DB Option 2 Level Face) 5x-25x (Dollar)',
+                                        currency: 'PHP',
+                                        famultipliermin: 15,
+                                        famultipliermax: 49,
+                                        deathbenefit: 'Face Plus',
+                                        fundcode: 'SGF',
+                                        riders: ['AJ070', 'WP133', 'PB005', 'HJ065', 'CR885', 'AD133'],
+                                    }
                                 ],
                             },
 

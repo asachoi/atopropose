@@ -24,7 +24,7 @@
                             <md-icon></md-icon>
                             <md-select name="planid" ng-model="baseObj.product.planid" ng-change="selectedPlan = getPlan(baseObj.product.productid, baseObj.product.planid);">
                                 <md-option ng-repeat="n in getBaseProductPlans(baseObj.product.productid)" ng-value="n.plantype + '.' + n.planid">
-                                    OLD MCBL {{n.productid}} Regular Pay ({{n.deathbenefit}} - {{n.famultipliermin}} x {{n.famultipliermax}} x [{{n.currency}}]) Band 1 {{n.planid}}
+                                    {{n.planname}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
