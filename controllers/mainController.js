@@ -1,15 +1,15 @@
 mainApp.controller('mainController',
-    ['$scope', '$rootScope', '$translate', '$http', 'coreSvcs', 
-        function ($scope, $rootScope, $translate, $http, coreSvcs) {
+    ['$scope', '$rootScope', '$translate', '$http', 'productServices', 
+        function ($scope, $rootScope, $translate, $http, productServices) {
             $scope.$on('$stateChangeSuccess',
                 function (event, toState, toParams, fromState, fromParams) {
                     $scope.currentstate = toState.name;
                 });
  
-console.debug(coreSvcs);
-            $rootScope.stateObj = coreSvcs.loadInitState();
 
-            $rootScope.settingObj = coreSvcs.loadProducts();
+            $rootScope.stateObj = productServices.loadInitState();
+
+            $rootScope.settingObj = productServices.loadProducts();
 
 
 

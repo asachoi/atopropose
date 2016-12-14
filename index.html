@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body ng-app="mainApp" ng-cloak ng-controller="mainController">
+<body ng-app="mainApp" ng-cloak ng-controller="mainController" >
   <md-content>
     <md-toolbar class="md-small-tall">
       <div class="md-toolbar-tools" layout="row" layout-wrap>
@@ -15,8 +15,7 @@
           <a ui-sref="list"> <i class="material-icons">home</i></a>
         </div>
         <div flex>
-          {{'CUSTOMER' | translate}}
-          {{'LIST' || translate}}
+          {{'CUSTOMER' | translate}} {{'LIST' || translate}}
         </div>
         <div flex="nogrow" ng-show="saveButton=='true'">
           <md-button class="md-raised md-primary" ng-click="saveState(title);">
@@ -33,7 +32,7 @@
 
     <footer>
       <div layout="row" layout-align="center center">
- 
+        {{stateObj}}
       </div>
     </footer>
     <!-- Angular Material requires Angular.js Libraries -->

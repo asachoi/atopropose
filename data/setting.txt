@@ -1,44 +1,4 @@
-mainApp.service('productServices', function ($http, $rootScope, $filter) {
-    this.getProductGroupList = function () {
-        return $rootScope.settingObj.products;
-    }
-
-    this.getProductGroup = function (productgroupid) {
-        // alert($rootScope.settingObj.products);
-        return $filter('filter')($rootScope.settingObj.products, { productid: productgroupid })[0];
-    }
-
-
-    this.getProduct = function (productgroupid, planid) {
-        if(planid==null) return;
-        var productgroup = this.getProductGroup(productgroupid);
-        var productid = planid.split('.')[0];       
-
-        return $filter('filter')(productgroup.plantypes, {plantype: productid})[0];
-    }
-
-    this.getPlan = function (productgroupid, planid) {
-        if(planid==null) return;
-        var product = this.getProduct(productgroupid, planid);
-        var pid = planid.split('.')[1];
-
-        return $filter('filter')(product.plans, {planid: pid})[0];
-    }
-
-
-   this.loadProducts = function () {
-        var url = '/data/setting.txt';
-        $http.get(url).then(
-            function (resp) {
-
-                //console.debug();
-                //alert(JSON.stringify(result.replace("\r\n","")));
-                //alert(resp.products);
-            }
-        );
-
-        var productMaster =
-            {
+          {
                 products: [
                     {
                         productid: 'Enrich',
@@ -82,7 +42,7 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                     {
                                         planid: 'UL121',
                                         planname: 'Old MCBL Enrich Regular Pay (DB Option 2 Level Face) 50x-99x (Peso) Band 1',
-                                        currency: 'USD',
+                                        currency: 'PHP',
                                         famultipliermin: 15,
                                         famultipliermax: 49,
                                         deathbenefit: 'Face Plus',
@@ -172,6 +132,14 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                                 ],
                             },
                             {
+
+
+
+
+
+
+
+
                                 plantype: 'LPUL',//limited pay unilink
 
                                 plans: [
@@ -333,39 +301,3 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                     }
                 ]
             };
-        return productMaster;
-    };
-
-    this.loadInitState = function () {
-        var data = {
-            settings: {
-                isSamePerson: true
-            },
-            customers:
-            [
-                {
-                    guid: guid(),
-                    source: 'PE',
-                    role: 'insurer',
-                    smoking: 'S',
-                    surname: 'Asa'
-                },
-                {
-                    role: 'policyholder',
-                    smoking: 'S',
-                    firstname: '',
-                    surname: ''
-
-                }
-            ],
-            product: {
-            }
-            ,
-            riders: [
-            ]
-        };
-        return data;
-    };
-
-
-});

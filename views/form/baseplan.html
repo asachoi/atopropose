@@ -2,7 +2,7 @@
     <!--panel session //-->
     <div ng-include="'views/form/cards/customersection.html?1=2'"></div>
     <!--form //-->
-    <form name="productForm" ng-keyup="" ng-mouseup="">
+    <form name="productForm" ng-keyup="" ng-mouseup="" ng-init="changePlan();">
         <section>
             <md-card>
                 <md-card-title>
@@ -12,17 +12,16 @@
                 </md-card-title>
                 <md-card-content>
                     <div layout-gt-xs="row">
-                        <md-input-container class="md-block" flex-gt-xs> <label>Product</label>
-
+                        <md-input-container class="md-block" flex=20>
+                            <label>Product</label>
                             <md-select name="productid" ng-model="baseObj.product.productid">
-                                <md-option ng-repeat="n in  getBaseProduct();" ng-value="n.productid">
+                                <md-option ng-repeat="n in getProductGroupList();" ng-value="n.productid">
                                     {{n.productid}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
-                        <md-input-container class="md-block" flex-gt-xs> <label>Plan</label>
-                            <md-icon></md-icon>
-                            <md-select name="planid" ng-model="baseObj.product.planid" ng-change="selectedPlan = getPlan(baseObj.product.productid, baseObj.product.planid);">
+                        <md-input-container class="md-block" flex=80> <label>Plan</label>
+                            <md-select name="planid" ng-model="baseObj.product.planid" ng-change="changePlan();">
                                 <md-option ng-repeat="n in getBaseProductPlans(baseObj.product.productid)" ng-value="n.plantype + '.' + n.planid">
                                     {{n.planname}}
                                 </md-option>
@@ -30,9 +29,8 @@
                         </md-input-container>
                     </div>
                     <!--demo//-->
-
                     <div layout-gt-xs="row">
-                        <md-input-container class="md-block" flex-gt-xs ng-if="selectedPlan.currency!=null">
+                        <md-input-container class="md-block">
                             <md-select name="currency" ng-model="baseObj.product.currency" ng-init="baseObj.product.currency=selectedPlan.currency;"
                                 ng-disabled="true">
                                 <md-option ng-value="selectedPlan.currency">{{selectedPlan.currency}}</md-option>
@@ -43,32 +41,10 @@
                             <input ng-model="baseObj.product.annualpremium">
                             </md-input>
                         </md-input-container>
-                        <md-slider-container>                            
-                            <md-slider flex min="{{selectedPlan.famultipliermin}}" max="{{selectedPlan.famultipliermax}}" ng-model="baseObj.product.famultiplier" aria-label="red" id="famultiplier" ng-init="baseObj.product.famultiplier=20">
-                            </md-slider>
-                            <span>{{baseObj.product.famultiplier}}</span>
-                        </md-slider-container>
-
-                        <md-input-container class="md-block" flex-gt-xs>
-                            <label>{{'faceamount'|translate}}</label>
-                            <input ng-model="baseObj.product.faceamount" ng-value="baseObj.product.annualpremium * baseObj.product.famultiplier" type="number"
-                                disabled>
-                            </md-input>
-                        </md-input-container>
                     </div>
-                    <div layout-gt-xs="row" ng-if="(getProduct(baseObj.product.productid).amounttype==null)">
-                        <md-input-container class="md-block" flex-gt-xs>
-                            <label>{{'deathbenefit'|translate}}</label>
-                            <md-select name="currency" ng-model="baseObj.product.deathbenefit" ng-init="baseObj.product.deathbenefit=selectedPlan.deathbenefit"
-                                ng-disabled="true">
-                                <md-option ng-value="selectedPlan.deathbenefit">{{selectedPlan.deathbenefit}}</md-option>
-                            </md-select>
-                        </md-input-container>
+                    <div layout-gt-xs="row" ng-if="selectedPlanType.customform" ng-include="'views/form/baseplan/' + selectedPlanType.customform + '.html?bb=1'">
                     </div>
-
-
-                    <!--demo//-->
-
+                  <!--demo//-->
                 </md-card-content>
             </md-card>
         </section>

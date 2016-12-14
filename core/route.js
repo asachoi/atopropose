@@ -24,12 +24,14 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             controller: function ($scope, $rootScope, $state) {
                 //$scope.state = $state;
 
-                $scope.baseObj = $scope.$parent.$parent.stateObj;
+                $scope.baseObj = $rootScope.stateObj;
                 $scope.settingObj = $scope.$parent.$parent.settingObj;
                 $scope.title = 'title.form';
 
                 $scope.setDisable = function (section) {
                     //console.debug(section);
+                    return true;
+                   
                 }
             }
         })
@@ -39,8 +41,8 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             templateUrl: 'views/form/customer.html?cb=' + cachebuster,
             controller: function ($scope, $rootScope, $state) {
                 $scope.current = $state.current;
-                $scope.baseObj = $scope.$parent.$parent.stateObj;
-                $scope.settingObj = $scope.$parent.$parent.settingObj;
+                $scope.baseObj = $rootScope.stateObj;
+                $scope.settingObj = $rootScope.settingObj;
 
 
                 $scope.updateSamePerson = function () {
@@ -52,71 +54,68 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             url: '/baseplan',
             cache: false,
             templateUrl: 'views/form/baseplan.html?cb=' + cachebuster,
-            controller: function ($scope, $rootScope, $filter, $state) {
-                $scope.current = $state.current;
-                $scope.baseObj = $scope.$parent.$parent.stateObj;
-                $scope.settingObj = $scope.$parent.$parent.settingObj;
+            controller: ['$scope', '$rootScope', '$filter', '$state', 'productServices',
+                function ($scope, $rootScope, $filter, $state, productServices) {
+                    $scope.current = $state.current;
+                    $scope.baseObj = $rootScope.stateObj;
+                    $scope.settingObj = $rootScope.settingObj;
 
-                $scope.getBaseProduct = function () {
-                    return $scope.settingObj.products;
-                }
-
-                $scope.getProduct = function (productid) {
-                    return $filter('filter')($scope.settingObj.products, { productid: productid })[0];
-                }
-                
-                               
-
-                $scope.getPlan = function (productid, planid) {
-                    if (planid == null) return 0;
-
-                    var plantype = planid.split('.')[0];
-                    var pid = planid.split('.')[1];
-
-                    var prd =  $scope.getProduct(productid);
-
-                    var producttype = $filter('filter')(prd.plantypes, {plantype:plantype})[0];
-                    var plan = $filter('filter')(producttype.plans, {planid:pid})[0];
-                    return plan; 
-                }
-
-
-                $scope.getBaseProductPlans = function (productid) {
-                    var p = $scope.getProduct(productid);
-                    var plans = [];
-
-                    for (i = 0; i < p.plantypes.length; i++) {
-
-                        var pt = p.plantypes[i];
-
-                        for (j = 0; j < pt.plans.length; j++) {
-                            var ptt = pt.plans[j];
-                            ptt.plantype = pt.plantype;
-                            plans = plans.concat(ptt);
-                        }
+                    $scope.test = function() {
+                        console.debug('test start');
+                        console.debug(productServices.getProductGroup('Enrich'));
+        console.debug(productServices.getProduct('Enrich', 'RPUL.UL122'));
+        console.debug(productServices.getPlan('Enrich', 'RPUL.UL122'));                        
+                        //console.de
+                        //productServices.test();
+                    }
+                    //productServices.getProductGroup('MC');
+                    $scope.getProductGroupList = function () {
+                        //alert(productServices.getProductGroupList());
+                        return productServices.getProductGroupList();
                     }
 
-                    return plans;
-                }
+                    $scope.getProduct = function (productid) {
+                        return productServices.getProductGroup(productid);
+                        //return $filter('filter')($rootScope.settingObj.products, { productid: productid })[0];
+                        //return productServices.getProductGroup(productid);
+                    }
 
-                $scope.isBasicPlan = function (productid, planid) {
+                    $scope.getPlan = function (productid, planid) {
+                        return productServices.getPlan(productid, planid);
 
-                    if (planid == null) return 0;
+                    }
 
-                    var pl = $filter('filter')($scope.settingObj.products, { productid: productid })[0];
-                    var productype = planid.split('.')[0];
-                    var rs = $filter('filter')(pl.plantypes, { plantype: productype });
-                    console.debug(rs);
+                    $scope.changePlan = function () {
+                        if($scope.baseObj.product.planid==null) return;
+                        var planTypeID = $scope.baseObj.product.planid.split('.')[0];
+                        var product = $scope.getProduct($scope.baseObj.product.productid);
+                        var producttype = $filter('filter')(product.plantypes, { plantype: planTypeID })[0];
 
+                        $scope.selectedPlan = $scope.getPlan($scope.baseObj.product.productid, $scope.baseObj.product.planid);
+                        $scope.selectedPlanType = producttype;
+                    }
 
+                    $scope.getBaseProductPlans = function (productid) {
+                        var p = $scope.getProduct(productid);                         
+                        if(p==null ) return;
+                        
+                        var plans = [];
 
+                        for (i = 0; i < p.plantypes.length; i++) {
 
+                            var pt = p.plantypes[i];
 
-                    var customfields = rs[0].customfields;
-                    //alert(customfields);
-                    return customfields == null ? 0 : customfields;
-                }
-            }
+                            for (j = 0; j < pt.plans.length; j++) {
+                                var ptt = pt.plans[j];
+                                ptt.plantype = pt.plantype;
+                                plans = plans.concat(ptt);
+                            }
+                        }
+
+                        return plans;
+                    }
+
+                }]
         })
         .state('form.rider', {
             url: '/rider',
@@ -124,14 +123,13 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             templateUrl: 'views/form/rider.html?cb=' + cachebuster,
             controller: function ($scope, $rootScope, $filter, $state) {
                 $scope.current = $state.current;
-                $scope.baseObj = $scope.$parent.$parent.stateObj;
-                $scope.settingObj = $scope.$parent.$parent.settingObj;
+                $scope.baseObj = $rootScope.stateObj;
+                $scope.settingObj = $rootScope.settingObj;
 
                 $scope.getRiderList = function (productid, planid) {
                     if (productid == null || planid == null) return;
                     var p = $filter('filter')($scope.settingObj.products, { productid: productid });
                     var rs = $filter('filter')(p[0].plans, { planid: planid });
-
                     return rs;
                 }
 
@@ -143,9 +141,8 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
             templateUrl: 'views/form/summary.html?cb=' + cachebuster,
             controller: function ($scope, $rootScope, $filter, $state) {
                 $scope.current = $state.current;
-                $scope.baseObj = $scope.$parent.$parent.stateObj;
-                $scope.settingObj = $scope.$parent.$parent.settingObj;
-
+                $scope.baseObj = $rootScope.stateObj;
+                $scope.settingObj = $rootScope.settingObj;
             }
         })
         ;
