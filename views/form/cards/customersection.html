@@ -1,4 +1,4 @@
-<section ng-init="s = baseObj.customers[0]">
+<section>
     <md-card>
         <md-card-title>
             <md-card-title-text>
@@ -7,10 +7,10 @@
         </md-card-title>
         <md-card-content>
             <div layout="row">
-                <div flex>{{'name' | translate }}:{{s.surname}} {{s.given}}</div>
-                <div flex>{{'gender' | translate }}: {{s.gender}}</div>
-                <div flex>{{'age' | translate }}: {{ s.dob | Age }}</div>
-                <div flex>{{'smoker' | translate }}: {{s.smoking | YesNo}}</div>
+                <div flex>{{'name' | translate }}:{{data.surname}} {{data.given}}</div>
+                <div flex>{{'gender' | translate }}: {{data.gender}}</div>
+                <div flex>{{'age' | translate }}: {{ data.dob | Age }}</div>
+                <div flex>{{'smoker' | translate }}: {{ data.smoking | YesNo}}</div>
             </div>
         </md-card-content>
     </md-card>

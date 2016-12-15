@@ -17,6 +17,14 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
         return $filter('filter')(productgroup.plantypes, { plantype: productid })[0];
     }
 
+    this.getProductName = function (productgroupid) {
+
+    }
+
+    this.getPlanName = function (productgroupid) {
+
+    }
+
     this.getPlansByProduct = function (productgroupid) {
         var p = this.getProductGroup(productgroupid);
         if (p == null) return;
@@ -357,7 +365,8 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                 isSamePerson: true
             },
             customers:
-            [
+            {
+                insured:
                 {
                     guid: guid(),
                     source: 'PE',
@@ -365,6 +374,7 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                     smoking: 'S',
                     surname: 'Asa'
                 },
+                policyholder:
                 {
                     role: 'policyholder',
                     smoking: 'S',
@@ -372,7 +382,7 @@ mainApp.service('productServices', function ($http, $rootScope, $filter) {
                     surname: ''
 
                 }
-            ],
+            },
             product: {
             }
             ,

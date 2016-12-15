@@ -1,7 +1,9 @@
 <md-content  class="md-padding">
     <!--panel session //-->
-    <div ng-include="'views/form/cards/customersection.html'"></div>
-    <div ng-include="'views/form/cards/plansection.html?b=B'"></div>
+    <customer-section data="baseObj.customers[0]"></customer-section>
+    <product-section data="baseObj.product"></product-section>
+
+    
  
     <!--form //-->
     <div data-ng-repeat="r in baseObj.riders">              

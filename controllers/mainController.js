@@ -5,14 +5,9 @@ mainApp.controller('mainController',
                 function (event, toState, toParams, fromState, fromParams) {
                     $scope.currentstate = toState.name;
                 });
- 
 
             $rootScope.stateObj = productServices.loadInitState();
-
             $rootScope.settingObj = productServices.loadProducts();
-
-
-
             $scope.stateObj = $rootScope.stateObj;
             $scope.settingObj = $rootScope.settingObj;
 

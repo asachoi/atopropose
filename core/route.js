@@ -43,7 +43,6 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                 $scope.baseObj = $rootScope.stateObj;
                 $scope.settingObj = $rootScope.settingObj;
 
-
                 $scope.updateSamePerson = function () {
                     $rootScope.settings.customerFormComplete = $scope.userForm.$valid;
                 }
@@ -60,34 +59,27 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                     $scope.settingObj = $rootScope.settingObj;
 
                     $scope.getProductGroupList = function () {
-                        //alert(productServices.getProductGroupList());
+
                         return productServices.getProductGroupList();
                     }
 
                     $scope.getProduct = function (productid) {
                         return productServices.getProductGroup(productid);
-                        //return $filter('filter')($rootScope.settingObj.products, { productid: productid })[0];
-                        //return productServices.getProductGroup(productid);
                     }
 
                     $scope.getPlan = function (productid, planid) {
                         return productServices.getPlan(productid, planid);
-
                     }
 
                     $scope.changePlan = function () {
                         if($scope.baseObj.product.planid==null) return;
-                        var planTypeID = $scope.baseObj.product.planid.split('.')[0];
-                        var product = $scope.getProduct($scope.baseObj.product.productid);
-                        var producttype = $filter('filter')(product.plantypes, { plantype: planTypeID })[0];
 
-                        $scope.selectedPlan = $scope.getPlan($scope.baseObj.product.productid, $scope.baseObj.product.planid);
-                        $scope.selectedPlanType = producttype;
+                        $scope.selectedPlan = productServices.getPlan($scope.baseObj.product.productid, $scope.baseObj.product.planid);
+                        $scope.selectedPlanType = productServices.getProduct($scope.baseObj.product.productid, $scope.baseObj.product.planid);
                     }
 
                     $scope.getBaseProductPlans = function (productid) {
                         return productServices.getPlansByProduct(productid);
-
                     }
 
                 }]
@@ -119,8 +111,7 @@ mainApp.config(function ($mdIconProvider, $mdThemingProvider, $stateProvider, $u
                 $scope.baseObj = $rootScope.stateObj;
                 $scope.settingObj = $rootScope.settingObj;
             }
-        })
-        ;
+        });
 
 
 });
